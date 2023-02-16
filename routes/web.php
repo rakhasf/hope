@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomebaseController;
-use App\Http\Controllers\WorkController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomebaseController::class, 'index']);
 
-Route::get('/tasks',[WorkController::class, 'index']);
-Route::get('/tasks/{id}', [WorkController::class, 'show']); //show
-Route::post('/tasks', [WorkController::class, 'store']); // store
-Route::patch('/tasks/{id}', [WorkController::class, 'update']); // update
-Route::delete('/tasks/{id}', [WorkController::class, 'delete']); //delete
+Route::get('/tasks',[TaskController::class, 'index']);
+Route::get('/tasks/create', [TaskController::class, 'create']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']); //show
+Route::post('/tasks', [TaskController::class, 'store']); // store
+Route::get('/tasks/{id}/edit', [TaskController::class, 'edit']);
+Route::patch('/tasks/{id}', [TaskController::class, 'update']); // update
+Route::delete('/tasks/{id}', [TaskController::class, 'delete']); //delete

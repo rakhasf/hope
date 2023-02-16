@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Task;
 
-class WorkController extends Controller
+class TaskController extends Controller
 {
 
     public function index(Request $request) {
@@ -16,8 +17,10 @@ class WorkController extends Controller
 
             return $task;
         }
-        $task = Task::all();
-        return $task;
+        $task = Task::paginate(3);
+        return view('task.index', [
+            'data' => $task
+        ]);
         
     }
 
@@ -26,27 +29,37 @@ class WorkController extends Controller
         return $task;
     }
 
-    public function store(Request $request){
+    public function create(){
+        return view('task.create');
+    }
+
+    public function store(TaskRequest $request){
         Task::create([
             'task' => $request->task,
             'user' => $request->user
         ]);
-        return 'Success';
+        // return 'Success';
+        return redirect('/tasks');
+    }
+
+    public function edit($id){
+        $task = Task::find($id);
+        return view('task.edit', compact('task'));
     }
     
-    public function update(Request $request, $id){
+    public function update(TaskRequest $request, $id){
         $task = Task::find($id);
         $task->update([
             'task' => $request->task,
             'user' => $request->user
         ]);
-        return $task;
+        return redirect('/tasks');
     }
 
     public function delete($id) {
         $task = Task::find($id)
         ->delete();
-        return 'Success';
+        return redirect('/tasks');
     }
 
 }
