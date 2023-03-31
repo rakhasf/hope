@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomebaseController::class, 'index']);
 
-Route::get('/tasks/create', [TaskController::class, 'create'])->middleware('is_admin');
-Route::get('/tasks/{id}', [TaskController::class, 'show'])->middleware('is_admin'); //show
-Route::post('/tasks', [TaskController::class, 'store'])->middleware('is_admin'); // store
+Route::get('/tasks',[TaskController::class, 'index']);
+Route::get('/tasks/create', [TaskController::class, 'create']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']); //show
+Route::post('/tasks', [TaskController::class, 'store']);// store
 Route::get('/tasks/{id}/edit', [TaskController::class, 'edit'])->middleware('is_admin');
 Route::patch('/tasks/{id}', [TaskController::class, 'update'])->middleware('is_admin'); // update
 Route::delete('/tasks/{id}', [TaskController::class, 'delete'])->middleware('is_admin'); //delete

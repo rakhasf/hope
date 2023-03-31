@@ -19,7 +19,7 @@
     </style>
 </head>
 
-<body>
+<body style="background-color: black">
     @include('components.navbar')
     @yield('main')
 

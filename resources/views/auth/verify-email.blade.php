@@ -9,7 +9,7 @@
                 A Fresh verification link has been sent to your email
             </div>
             @endif
-
+            
             Before proceeding, please check your email for verification.
             Or <form action="{{ route('verification.send') }}" method="post" class="d-inline">
             @csrf

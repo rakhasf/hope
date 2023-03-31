@@ -14,13 +14,13 @@
     @endif
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body" style="background-color: black; font-family:'Courier New', Courier, monospace">
             <form action="{{ route('login') }}" method="POST">
                 @csrf
 
                 <div class="mb-3">
-                    <label for="" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control" value="{{ old('email') }}">
+                    <label for="" class="form-label" style="background-color: black; color: white;">Email</label>
+                    <input name="email" type="email" class="form-control" value="{{ old('email') }}" style="background-color: black; color: white; font-family:'Courier New', Courier, monospace">
                     @error('email')
                         <span class="text-danger">
                             {{ $message }}
@@ -28,16 +28,18 @@
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label">Password</label>
-                    <input name="password" type="password" class="form-control" value="{{ old('password') }}">
+                    <label for="" class="form-label" style="background-color: black; color: white;">Password</label>
+                    <input name="password" type="password" class="form-control" value="{{ old('password') }}" style="background-color: black; color: white; font-family:'Courier New', Courier, monospace">
                     @error('password')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
                 </div>
-
-                <a href="{{ route('password.request') }}" class="btn btn-link">Forgot Your Password</a>
+                
+                <button type="submit" class="btn btn-primary" style="background-color: black; outline-color: white;">Login</button>
+                {{-- <a href="{{ route('password.request') }}" class="btn btn-link" style="background-color: black; color: white; font-family:'Courier New', Courier, monospace">
+                    Forgot Your Password</a> --}}
             </form>
         </div>
     </div>
